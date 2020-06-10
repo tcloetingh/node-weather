@@ -31,7 +31,7 @@ app.get("/about", (req, res) => {
 app.get("/help", (req, res) => {
   res.render("help", {
     questions: "here to answer questions",
-    FAQs: "Frequently Asked Questions",
+    help: "Sorry no help here, if you find some let me know",
     title: "Here to help",
     name: "Tyler C"
   });

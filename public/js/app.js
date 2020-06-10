@@ -1,12 +1,10 @@
 console.log("Serving up the javascript");
-fetch("http://puzzle.mead.io/puzzle").then(response => {
-  response.json().then(data => {
-    console.log(data);
-  });
-});
 
 const weatherForm = document.getElementById("formInput");
 const searchElement = document.getElementById("searchInput");
+const messageOne = document.getElementById("message-1");
+const messageTwo = document.getElementById("message-2");
+
 weatherForm.addEventListener("submit", e => {
   const location = searchElement.value;
   e.preventDefault();
@@ -14,9 +12,10 @@ weatherForm.addEventListener("submit", e => {
   fetch(`http://localhost:3000/weather?address=${location}`).then(response => {
     response.json().then(data => {
       if (data.error) {
-        console.log(data);
+        messageOne.textContent = data.error;
       } else {
-        console.log(data);
+        messageOne.textContent = data.location;
+        messageTwo.textContent = data.forecast;
       }
     });
   });
