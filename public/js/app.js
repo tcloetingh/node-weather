@@ -5,12 +5,19 @@ fetch("http://puzzle.mead.io/puzzle").then(response => {
   });
 });
 
-fetch("http://localhost:3000/weather?address=philadelphia").then(response => {
-  response.json().then(data => {
-    if (data.error) {
-      console.log(data);
-    } else {
-      console.log(data);
-    }
+const weatherForm = document.getElementById("formInput");
+const searchElement = document.getElementById("searchInput");
+weatherForm.addEventListener("submit", e => {
+  const location = searchElement.value;
+  e.preventDefault();
+
+  fetch(`http://localhost:3000/weather?address=${location}`).then(response => {
+    response.json().then(data => {
+      if (data.error) {
+        console.log(data);
+      } else {
+        console.log(data);
+      }
+    });
   });
 });
